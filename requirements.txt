@@ -7,6 +7,9 @@ dash-html-components
 dash-core-components
 pandas
 numpy
-dash_daq
 statsmodels.api
 yfinance
+pillow
+statsmodels.tsa.api
+datetime
+stockstats

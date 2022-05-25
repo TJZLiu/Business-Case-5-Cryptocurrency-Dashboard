@@ -1,7 +1,6 @@
 import dash
 from dash import dcc
 from dash import html
-import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 import numpy as np
 import pandas as pd
@@ -68,7 +67,7 @@ Cryptocurrencies_factors_options = [dict(label=factors, value=factors) for facto
 
 Time_period_factors_options = [dict(label=factors, value=factors) for factors in Time_period_factors]
 
-Selector_Cryptocurrency = dcc.RadioItems(
+Selector_Cryptocurrency = dcc.Dropdown(
         id='Cryptocurrency_drop',
         options=Cryptocurrencies_options,
         value='BTC_USD'
@@ -86,10 +85,8 @@ Selector_timeperiod = dcc.RadioItems(
         value='1 Day'
     )
 
-dropdown_scope = dcc.Dropdown(
+dropdown_scope = dcc.RadioItems(
         id='scopes_option',
-        clearable=False,
-        searchable=False,
         options=[{'label': 'World', 'value': 'world'},
                 {'label': 'Europe', 'value': 'europe'},
                 {'label': 'Asia', 'value': 'asia'},
@@ -117,79 +114,137 @@ server = app.server
 
 app.layout = html.Div([
     html.Div([
-        html.H1( "Crypto Dashboard")
-    ], id='head'),
+        html.Div([
+            html.H1( "Crypto Dashboard")
+        ],className='container', id='head')
+    ],className='title'),
 ####first row start
     html.Div([
         html.Div([
+            html.Br(),
             html.Div([
-                dcc.Graph(id='cryptologo')]),
+                html.Div([
+                    dcc.Graph(id='cryptologo'),
+                    html.H2(id='shortName'),
+                ],className='container'),
+            ],className='card'),
+
+            html.Br(),
             html.Div([
-                html.Label(id='shortName'),
-                html.Br(),
-                html.Label(id='exchangeTimezoneName'),
-                html.Br(),
-                html.Label(id='previousClose'),
-                html.Br(),
-                html.Label(id='regularMarketOpen'),
-                html.Br(),
-                html.Label(id='twoHundredDayAverage'),
-                html.Br(),
-                html.Label(id='volume24Hr'),
-                html.Br(),
-                html.Label(id='averageDailyVolume10Day'),
-                html.Br(),
-                html.Label(id='regularMarketVolume'),
-                html.Br(),
-                html.Label(id='dayLow'),
-                html.Br(),
-                html.Label(id='dayHigh'),
-            ]),
-        ], style={'width': '10%'}),
+                html.Div([
+                    html.Label(id='exchangeTimezoneName'),
+                    html.Br(),
+                    html.Label(id='previousClose'),
+                    html.Br(),
+                    html.Label(id='regularMarketOpen'),
+                    html.Br(),
+                    html.Label(id='twoHundredDayAverage'),
+                    html.Br(),
+                    html.Label(id='volume24Hr'),
+                    html.Br(),
+                    html.Label(id='averageDailyVolume10Day'),
+                    html.Br(),
+                    html.Label(id='regularMarketVolume'),
+                    html.Br(),
+                    html.Label(id='dayLow'),
+                    html.Br(),
+                    html.Label(id='dayHigh'),
+                ],className='container')
+            ],className='card'),
+
+            html.Br(),
+            html.Div([
+                html.Div([
+                    html.Label(id='description')
+                ],className='container')
+            ],className='card')
+        ], style={'width': '15%'}),
 
         html.Div([
-            html.Div([
-                Selector_Cryptocurrency,]),
-            html.Br(),
-            html.Div([
-                Selector_timeperiod,]),
-            html.Br(),
-            html.Div([
-                Selector_indicators, ]),
             html.Br(),
             html.Div([
                 html.Div([
-                dcc.Graph(id='main_plot')],className='container'),
-                ],className='card'),
+                    html.Div([
+                        Selector_Cryptocurrency,
+                    ], style={'width': '30%'},className='container3'),
+                    html.Div([
+                        Selector_timeperiod,
+                    ], style={'width': '30%'},className='container3'),
+                    html.Div([
+                        Selector_indicators,
+                    ], style={'width': '30%'},className='container3')
+                ], style={'display': 'flex'}),
+            ],className='card'),
+
+            html.Br(),
             html.Div([
                 html.Div([
-                    dcc.Graph(id='holt_linear_plot')], style={'width': '33.33%'}),
+                    dcc.Graph(id='main_plot')],className='container'),
+            ],className='card'),
+
+            html.Br(),
+            html.Div([
                 html.Div([
-                    dcc.Graph(id='holt_winters_plot')], style={'width': '33.33%'}),
+                    html.Div([
+                        html.H3("Holt Linear Prediction"),
+                        dcc.Graph(id='holt_linear_plot')
+                    ],className='container'),
+                ], style={'width': '30%'},className='card'),
                 html.Div([
-                    dcc.Graph(id='sarima_plot')], style={'width': '33.33%'})
-            ], style={'display': 'flex'}),
-        ], style={'width': '70%'}),
+                    html.Div([
+                        html.H3("Holt Winters Prediction"),
+                        dcc.Graph(id='holt_winters_plot')
+                    ],className='container'),
+                ], style={'width': '30%'},className='card'),
+                html.Div([
+                    html.Div([
+                        html.H3("Seasonal ARIMA Prediction"),
+                        dcc.Graph(id='sarima_plot')
+                    ],className='container')
+                ], style={'width': '30%'},className='card')
+            ], style={'display': 'flex'},className='card3'),
+        ], style={'width': '60%'}),
 
         html.Div([
-            dcc.Graph(id='other_currencies_price_table'),
-            html.Iframe(
-                srcDoc='''
-           <a class="twitter-timeline" href="https://twitter.com/topnewsbitcoin/lists/bitcoin?ref_src=twsrc%5Etfw">
-           A Twitter List by topnewsbitcoin</a> 
-           <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-           ''', height=600)
-        ], style={'width': '20%'})
-    ], style={'display': 'flex'},className='row1back'),
+            html.Br(),
+            html.Div([
+                html.Div([
+                    html.H3("Other Cryptocurrencies Yesterday Price "),
+                    dcc.Graph(id='other_currencies_price_table'),
+                ],className='container'),
+            ],className='card'),
+            html.Br(),
+            html.Div([
+                html.Div([
+                    html.Iframe(srcDoc='''
+                            <a class="twitter-timeline" href="https://twitter.com/topnewsbitcoin/lists/bitcoin?ref_src=twsrc%5Etfw">
+                            A Twitter List by topnewsbitcoin</a> 
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            ''', height=500, width=400)
+                ],className='container'),
+            ],className='card'),
+        ], style={'width': '25%'})
+    ], style={'display': 'flex',}),
 ####first row end
+
+    html.Br(),
     html.Div([
+        html.Div([], style={'width': '15%'}),
         html.Div([
-            html.Label(id='description'),
-            html.Br(),
-            dropdown_scope]),
-        html.Div([
-                dcc.Graph(id='choropleth')]),
-    ]),
+            html.Div([
+                html.H2("Legalty Monitor"),
+                html.Div([
+                    dropdown_scope
+                ],className='container'),
+                html.Div([
+                    dcc.Graph(id='choropleth')
+                ],className='container'),
+                html.Br()
+            ],className='card'),
+            html.Br()
+        ], style={'width': '60%'}),
+        html.Div([], style={'width': '25%'}),
+    ], style={'display': 'flex'}),
 
 ])
 
@@ -323,7 +378,7 @@ def other_prices_table_and_logo(Cryptocurrency_name):
     return go.Figure(data = data_table,layout=layout_table), \
            fig_logo,\
            str(the_info.info['description']),\
-           'Short Name: ' + str(the_info.info['shortName']),\
+           str(the_info.info['shortName']),\
            'Exchange Timezone Name: ' + str(the_info.info['exchangeTimezoneName']),\
            'Previous Close Price: ' + str(the_info.info['previousClose']),\
            'Regular MarkeT Open Price: ' + str(the_info.info['regularMarketOpen']),\
@@ -435,13 +490,12 @@ def plots(continent):
     fig_map = px.choropleth(locations=df_map['Country'],
                         locationmode="ISO-3",
                         color=df_map['Legality'],
-                        color_discrete_map={'Illegal': 'Red',
-                                            'Legal / Banking ban': 'Yellow',
-                                            'Legal': 'Green',
-                                            'Legal to trade and hold / Illegal as payment tool, banking ban': 'Chocolate',
-                                            'Legal to trade and hold / Illegal as payment tool': 'Coral'},
+                        color_discrete_map={'Illegal': 'darkred',
+                                            'Some significant concerns': 'peachpuff',
+                                            'Legal': 'lightgreen'},
                         scope=continent)
     fig_map.update_layout(margin=dict(l=0, r=0, b=0, t=0, pad=0),
+                          legend=dict(title=None, orientation="h", y=1, yanchor="bottom", x=0.5, xanchor="center"),
                                   plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
 
     return [fig_map]
