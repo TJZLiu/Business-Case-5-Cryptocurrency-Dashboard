@@ -13,7 +13,6 @@ from PIL import Image # pillow backage
 
 from statsmodels.tsa.api import ExponentialSmoothing, SimpleExpSmoothing, Holt
 import statsmodels.api as sm
-from autots import AutoTS
 import datetime as DT
 
 from stockstats import StockDataFrame
