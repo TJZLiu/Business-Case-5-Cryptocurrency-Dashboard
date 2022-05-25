@@ -1,40 +1,37 @@
-Country,Legality
+﻿Country,Legality
 DZA,Illegal
 EGY,Illegal
 MAR,Illegal
-NGA,Legal / Banking ban
+NGA,Legal
 TZA,Legal
 CAF,Legal
 MUS,Legal
 AGO,Legal
 ZAF,Legal
-NAM,Legal / Banking ban
-ZWE,Unknown
-CAN,Legal / Banking ban
+NAM,Some significant concerns
+CAN,Some significant concerns
 USA,Legal
 MEX,Legal
-CRI,Not considered Currency
 SLV,Legal
-NIC,Not regulated as of 2014
 JAM,Legal
 TTO,Legal
-ARG,Legal / Banking ban
+ARG,Some significant concerns
 BOL,Illegal
 BRA,Legal
 CHL,Legal
-COL,Legal / Banking ban
-ECU,"Legal to trade and hold / Illegal as payment tool, banking ban"
+COL,Some significant concerns
+ECU,Some significant concerns
 VEN,Legal
 KGZ,Legal
 UZB,Legal
-ARE,Legal / Banking ban
+ARE,Some significant concerns
 ISR,Legal
-SAU,Legal / Banking ban
-JOR,Legal / Banking ban
+SAU,Some significant concerns
+JOR,Some significant concerns
 LBN,Legal
-TUR,Legal / Banking ban
-QAT,Legal / Banking ban
-IRN,Legal / Banking ban
+TUR,Some significant concerns
+QAT,Some significant concerns
+IRN,Some significant concerns
 BGD,Illegal
 IND,Legal
 NPL,Illegal
@@ -42,16 +39,16 @@ PAK,Legal
 CHN,Illegal
 HKG,Legal
 JPN,Legal
-KOR,Legal 
-TWN,Legal / Banking ban
-KGM,Legal / Banking ban
-IDN,Legal to trade and hold / Illegal as payment tool
+KOR,Legal
+TWN,Some significant concerns
+KGM,Some significant concerns
+IDN,Some significant concerns
 MYS,Legal
 PHL,Legal
 SGP,Legal
-THA,Legal to trade and hold / Illegal as payment tool
-VNM,Legal to trade and hold / Illegal as payment tool
-BRN,Legal to trade and hold
+THA,Some significant concerns
+VNM,Some significant concerns
+BRN,Some significant concerns
 AUT,Legal
 HRV,Legal
 CZE,Legal
@@ -65,30 +62,30 @@ CHE,Legal
 ALB,Legal
 BLR,Legal
 GEO,Legal
-KOS,Ban of mining
-RUS,Legal to mine / Banking ban
-UKR,Legal / Illegal to buy with local currency
-DNK,Legal 
-EST,Legal 
-FIN,Legal 
-ISL,Legal 
-LTU,Legal 
-NOR,Legal 
-SWE,Legal 
-BIH,Legal 
-BGR,Legal 
-CYP,Legal 
-GRC,Legal 
-ITA,Legal 
-MLT,Legal 
-MKD,Legal 
-PRT,Legal 
-ESP,Legal 
-BEL,Legal 
-Frau,Legal 
-IRL,Not regulated by central bank
-LUX,Legal 
-NLD,Not regulated
+KOS,Some significant concerns
+RUS,Some significant concerns
+UKR,Some significant concerns
+DNK,Legal
+EST,Legal
+FIN,Legal
+ISL,Legal
+LTU,Legal
+NOR,Legal
+SWE,Legal
+BIH,Legal
+BGR,Legal
+CYP,Legal
+GRC,Legal
+ITA,Legal
+MLT,Legal
+MKD,Legal
+PRT,Legal
+ESP,Legal
+BEL,Legal
+Frau,Legal
+IRL,Legal
+LUX,Legal
+NLD,Legal
 GBR,Legal
 AUS,Legal
 NZL,Legal
