@@ -3,83 +3,74 @@ body {
 ;
 }
 
-.box {
-  border-radius: 5px;
-  background-color: #5ec962;
-  margin: 10px;
-  padding: 15px;
-  box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;
-}
 
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
-  border-radius: 20px;
-  background-color: #C0C0C0;
-  margin: 2px;
-  box-shadow: 2px 2px 2px lightgrey;
+    vertical-align:middle;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 90%;
-  border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 90%;
+    border-radius: 10px;
     background-color:#ffffff;
     vertical-align:middle;
-    horiz-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 img {
-  border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
 }
 
 .container {
-  padding: 2px 16px;
-
-@media (max-width: 900px) {
-  .row {
-    display: block;
-  }
-}
-
-
-.ranksbox {
-    box-shadow: 5px 10px 8px #888888;
-    text-align: center;
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 10%;
-}
-
-.pretty_box {
     padding: 20px;
-    border-radius: 20px;
-    margin: 20px;
-    box-shadow: 2px 2px 2px lightgrey;
-    vertical-align:middle;
-    position:relative
 }
-.row1back {
-    background-color: #ffffff;
+
+.cardcenter {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 95%;
+    border-radius: 10px;
+    background-color:#ffffff;
     vertical-align:middle;
-    position:relative
+    margin-left: auto;
+    margin-right: auto;
 }
-.row2back {
-    background-color: #99d492;
-    vertical-align:middle;
-    position:relative
+
+.cardcenter:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.row3back {
-    background-color: #74c67a;
+.card3 {
+    transition: 0.3s;
+    width: 98%;
     vertical-align:middle;
-    position:relative
+    margin-left: auto;
+    margin-right: auto;
 }
-.row4back {
-    background-color: #56b870;
+
+.container3 {
+    transition: 0.3s;
+    width: 92%;
     vertical-align:middle;
-    position:relative
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.title {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 95%;
+    border-radius: 10px;
+    background-color:#ffffff;
+    vertical-align:middle;
+    margin-left: auto;
+    margin-right: auto;
 }

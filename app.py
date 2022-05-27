@@ -1,7 +1,6 @@
 import dash
-from dash import dcc
-from dash import html
-from dash.dependencies import Input, Output, State
+from dash import dcc, html, dash_table
+from dash.dependencies import Input, Output
 import numpy as np
 import pandas as pd
 import yfinance as yf
@@ -9,14 +8,12 @@ import yfinance as yf
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.express as px
-from PIL import Image # pillow backage
 
-from statsmodels.tsa.api import ExponentialSmoothing, SimpleExpSmoothing, Holt
+from statsmodels.tsa.api import ExponentialSmoothing, Holt
 import statsmodels.api as sm
 import datetime as DT
 
 from stockstats import StockDataFrame
-
 ######################################################Built-in functions################################################
 
 def get_df_name(df):
@@ -81,7 +78,8 @@ Selector_factors = dcc.RadioItems(
 Selector_timeperiod = dcc.RadioItems(
         id='time_option',
         options=Time_period_factors_options,
-        value='1 Day'
+        value='1 Day',
+        inline=True
     )
 
 dropdown_scope = dcc.RadioItems(
@@ -95,14 +93,15 @@ dropdown_scope = dcc.RadioItems(
         value='world',
     )
 
-Selector_indicators = dcc.RadioItems(
+Selector_indicators = dcc.Dropdown(
         id='indicator_option',
         options=[{'label': 'SMA', 'value': 'close_5_sma'},
                 {'label': 'EMA', 'value': 'close_5_ema'},
                 {'label': 'MSTD', 'value': 'close_5_mstd'},
                 {'label': 'MVAR', 'value': 'close_5_mvar'},
                 {'label': 'Bolling', 'value': 'boll'}],###
-        value=None
+        value=None,
+        placeholder="Select an indicator",
     )
 
 ##################################################APP###################################################################
@@ -117,13 +116,13 @@ app.layout = html.Div([
             html.H1( "Crypto Dashboard")
         ],className='container', id='head')
     ],className='title'),
-####first row start
+####first column
     html.Div([
         html.Div([
             html.Br(),
             html.Div([
                 html.Div([
-                    dcc.Graph(id='cryptologo'),
+                    html.Img(id='cryptologo',height=200),
                     html.H2(id='shortName'),
                 ],className='container'),
             ],className='card'),
@@ -156,9 +155,35 @@ app.layout = html.Div([
                 html.Div([
                     html.Label(id='description')
                 ],className='container')
-            ],className='card')
-        ], style={'width': '15%'}),
+            ],className='card'),
 
+            html.Br(),
+            html.Div([
+                html.Div([
+                    html.Img(src=app.get_asset_url('novaims_logo.png'),height=200),
+                    html.H4("Authors"),
+                    dcc.Markdown("""\
+                      Laura Isabella Cuna (m20211312@novaims.unl.pt)    
+                      Amelie Florentine Langenstein (m20210637@novaims.unl.pt)  
+                      Tongjiuzhou Liu (m20211012@novaims.unl.pt)  
+                      Nina Urbancic (m20211314@novaims.unl.pt)  
+                    """, style={"text-align": "center", "font-size": "12pt"}),
+                    html.H4("Project Info"),
+                    dcc.Markdown("""\
+                     COURSE : 
+                     Business Case with Data Science    
+                     BC5 : 
+                     Crypto Dashboard
+                    """, style={"text-align": "center", "font-size": "12pt"}),
+                    html.H4("Instructors"),
+                    dcc.Markdown("""
+                    FERNANDO LUCAS BAÇÃO
+                    JOÃO PEDRO FONSECA
+                    HUGO SAISSE MENTZINGEN DA SILVA""", style={"text-align": "center", "font-size": "12pt"}),
+                ],className='container'),
+            ],className='card')
+        ], style={'width': '16%'}),
+####second column
         html.Div([
             html.Br(),
             html.Div([
@@ -167,20 +192,20 @@ app.layout = html.Div([
                         Selector_Cryptocurrency,
                     ], style={'width': '30%'},className='container3'),
                     html.Div([
+                        Selector_indicators,
+                    ], style={'width': '30%'}, className='container3'),
+                    html.Div([
                         Selector_timeperiod,
                     ], style={'width': '30%'},className='container3'),
-                    html.Div([
-                        Selector_indicators,
-                    ], style={'width': '30%'},className='container3')
                 ], style={'display': 'flex'}),
-            ],className='card'),
-
+            ],className='cardcenter'),
+            ####main plot
             html.Br(),
             html.Div([
                 html.Div([
                     dcc.Graph(id='main_plot')],className='container'),
-            ],className='card'),
-
+            ],className='cardcenter'),
+            ####3 predictions
             html.Br(),
             html.Div([
                 html.Div([
@@ -202,16 +227,37 @@ app.layout = html.Div([
                     ],className='container')
                 ], style={'width': '30%'},className='card')
             ], style={'display': 'flex'},className='card3'),
+            ##### the MAP
+            html.Br(),
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.H2("Legalty Monitor"),
+                    ], className='container'),
+                    html.Div([
+                        dropdown_scope
+                    ], className='container'),
+                    html.Div([
+                        dcc.Graph(id='choropleth')
+                    ], className='container'),
+                    html.Br()
+                ], className='cardcenter'),
+                html.Br()
+            ]),
         ], style={'width': '60%'}),
-
+####third column
         html.Div([
             html.Br(),
             html.Div([
                 html.Div([
                     html.H3("Other Cryptocurrencies Yesterday Price "),
-                    dcc.Graph(id='other_currencies_price_table'),
+                    dash_table.DataTable(
+                        id='other_currencies_price_table',style_data={'whiteSpace': 'normal', 'height': 'auto', 'lineHeight': '15px'},
+                        style_cell={'overflow': 'hidden','textOverflow': 'ellipsis','maxWidth': 0, 'textAlign': 'center'},
+                    ),
                 ],className='container'),
             ],className='card'),
+            ### twitter
             html.Br(),
             html.Div([
                 html.Div([
@@ -219,32 +265,11 @@ app.layout = html.Div([
                             <a class="twitter-timeline" href="https://twitter.com/topnewsbitcoin/lists/bitcoin?ref_src=twsrc%5Etfw">
                             A Twitter List by topnewsbitcoin</a> 
                             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            ''', height=500, width=400)
+                            ''', height=1400, width=375)
                 ],className='container'),
             ],className='card'),
-        ], style={'width': '25%'})
+        ], style={'width': '24%'})
     ], style={'display': 'flex',}),
-####first row end
-
-    html.Br(),
-    html.Div([
-        html.Div([], style={'width': '15%'}),
-        html.Div([
-            html.Div([
-                html.H2("Legalty Monitor"),
-                html.Div([
-                    dropdown_scope
-                ],className='container'),
-                html.Div([
-                    dcc.Graph(id='choropleth')
-                ],className='container'),
-                html.Br()
-            ],className='card'),
-            html.Br()
-        ], style={'width': '60%'}),
-        html.Div([], style={'width': '25%'}),
-    ], style={'display': 'flex'}),
-
 ])
 
 
@@ -323,8 +348,8 @@ def candlestick_plot(Cryptocurrency_name,period,indicator):
 ############################################ Other price Table and logo ################################################
 @app.callback(
     [
-        Output("other_currencies_price_table", "figure"),
-        Output("cryptologo", "figure"),
+        Output("other_currencies_price_table", "data"),
+        Output("cryptologo", "src"),
         Output("description", "children"),
         Output("shortName", "children"),
         Output("exchangeTimezoneName", "children"),
@@ -344,38 +369,20 @@ def candlestick_plot(Cryptocurrency_name,period,indicator):
 
 def other_prices_table_and_logo(Cryptocurrency_name):
     #########TABLE##################################
-    prices_table = Yestoday_Price_Table[Yestoday_Price_Table.index != Cryptocurrency_name].round(6)
-
-    data_table=dict(type='table',
-        header=dict(values=['Name','Open','High','Low','Close'],
-                    font=dict(color='white', size=12),
-                    fill_color='gray',
-                    align='center'),
-        cells=dict(values=[prices_table.index,prices_table.Open,
-                           prices_table.High, prices_table.Low, prices_table.Close],
-                   fill_color='white',
-                   align='left'))
-
-    layout_table = dict(margin=dict(l=0,r=0,b=0,t=0,pad=0),
-                        paper_bgcolor='rgba(0,0,0,0)',
-                        plot_bgcolor='rgba(0,0,0,0)')
+    prices_table = Yestoday_Price_Table[Yestoday_Price_Table.index != Cryptocurrency_name]\
+        .round(6).reset_index().rename(columns={'index': ''})
+    prices_table = prices_table.loc[:, ~prices_table.columns.isin(['Adj Close', 'Volume'])].to_dict(orient='records')
 
     #########LOGO##################################
-    logo_address =  'assets/' + Cryptocurrency_name.rpartition('_')[0] + '.png'
-    img = np.array(Image.open(logo_address))
+    logo_address = 'assets/' + Cryptocurrency_name.rpartition('_')[0] + '.png'
 
-    fig_logo = px.imshow(img,aspect='auto')
-
-    fig_logo.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)',paper_bgcolor='rgba(0, 0, 0, 0)',
-                           width=200, height=200, margin=dict(l=10, r=10, b=10, t=10))
-    fig_logo.update_xaxes(showticklabels=False).update_yaxes(showticklabels=False)
 
     #########INFO###################################
     the_name = Cryptocurrency_name.replace("_", "-")
     the_info = yf.Ticker(the_name)
 
-    return go.Figure(data = data_table,layout=layout_table), \
-           fig_logo,\
+    return prices_table, \
+           str(logo_address),\
            str(the_info.info['description']),\
            str(the_info.info['shortName']),\
            'Exchange Timezone Name: ' + str(the_info.info['exchangeTimezoneName']),\

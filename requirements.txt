@@ -9,6 +9,5 @@ pandas
 numpy
 statsmodels
 yfinance
-pillow
 datetime
 stockstats
