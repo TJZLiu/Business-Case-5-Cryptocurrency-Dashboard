@@ -167,19 +167,19 @@ app.layout = html.Div([
                       Amelie Florentine Langenstein (m20210637@novaims.unl.pt)  
                       Tongjiuzhou Liu (m20211012@novaims.unl.pt)  
                       Nina Urbancic (m20211314@novaims.unl.pt)  
-                    """, style={"text-align": "center", "font-size": "12pt"}),
+                    """, style={"text-align": "center", "font-size": "16px"}),
                     html.H4("Project Info"),
                     dcc.Markdown("""\
                      COURSE : 
                      Business Case with Data Science    
                      BC5 : 
                      Crypto Dashboard
-                    """, style={"text-align": "center", "font-size": "12pt"}),
+                    """, style={"text-align": "center", "font-size": "16px"}),
                     html.H4("Instructors"),
                     dcc.Markdown("""
                     FERNANDO LUCAS BAÇÃO
                     JOÃO PEDRO FONSECA
-                    HUGO SAISSE MENTZINGEN DA SILVA""", style={"text-align": "center", "font-size": "12pt"}),
+                    HUGO SAISSE MENTZINGEN DA SILVA""", style={"text-align": "center", "font-size": "16px"}),
                 ],className='container'),
             ],className='card')
         ], style={'width': '16%'}),
@@ -235,8 +235,10 @@ app.layout = html.Div([
                         html.H2("Legalty Monitor"),
                     ], className='container'),
                     html.Div([
-                        dropdown_scope
-                    ], className='container'),
+                        html.Div([], style={'width': '20%'}),
+                        html.Div([dropdown_scope], style={'width': '60%'}),
+                        html.Div([], style={'width': '20%'}),
+                    ], style={'display': 'flex'}, className='container'),
                     html.Div([
                         dcc.Graph(id='choropleth')
                     ], className='container'),
