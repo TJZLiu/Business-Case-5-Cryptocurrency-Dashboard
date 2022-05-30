@@ -20,7 +20,6 @@ The main graph, the Candlestick with Rangeslider, displays the daily prices and 
 Hovering over a specific element of the graph gives the user more information. For the candlesticks, it shows information about the opening, highest, lowest, and closing price for that specific period, as well as indicating whether the price went up or down. Hovering over the volume tells the exact volume traded for that period. 
 
 ![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/4.png?raw=true "Optional Title")
-
 ![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/5.png?raw=true "Optional Title")
 
 The Rangeslider also allows the user to choose the period it wants to observe. 
