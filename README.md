@@ -41,4 +41,6 @@ On the right side of the dashboard, the user can find a table that displays the 
 
 The final visualization on the dashboard is a Choropleth Map, which tells us whether cryptocurrencies are legal in certain countries or not. By default, the user sees the status for the whole world, but there is also an option to filter based on the continents. 
 
+![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/screenshot%2010.png?raw=true "Optional Title")
+
 Also, the user can hover over each country to see whether cryptocurrencies are legal or not in that country and see the country code. 
