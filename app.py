@@ -213,19 +213,13 @@ app.layout = html.Div([
                         html.H3("Holt Linear Prediction"),
                         dcc.Graph(id='holt_linear_plot')
                     ],className='container'),
-                ], style={'width': '30%'},className='card'),
+                ], style={'width': '45%'},className='card'),
                 html.Div([
                     html.Div([
                         html.H3("Holt Winters Prediction"),
                         dcc.Graph(id='holt_winters_plot')
                     ],className='container'),
-                ], style={'width': '30%'},className='card'),
-                html.Div([
-                    html.Div([
-                        html.H3("Seasonal ARIMA Prediction"),
-                        dcc.Graph(id='sarima_plot')
-                    ],className='container')
-                ], style={'width': '30%'},className='card')
+                ], style={'width': '45%'},className='card'),
             ], style={'display': 'flex'},className='card3'),
             ##### the MAP
             html.Br(),
@@ -402,8 +396,7 @@ def other_prices_table_and_logo(Cryptocurrency_name):
 @app.callback(
     [
         Output("holt_linear_plot", "figure"),
-        Output("holt_winters_plot", "figure"),
-        Output("sarima_plot", "figure"),
+        Output("holt_winters_plot", "figure")
     ],
     [
         Input("Cryptocurrency_drop", "value")
@@ -457,30 +450,10 @@ def prediction_plots(Cryptocurrency_name):
                                          low=HOLT_WINTERS_Prediction['Low'],
                                          close=HOLT_WINTERS_Prediction['Close'])]
 
-    ########## SARIMA ########################
-    SARIMA_Prediction = pd.DataFrame()
-    SARIMA_Prediction['Date'] = get_date_followweek(prediction_data)
-    SARIMA_Prediction.index = SARIMA_Prediction.Date
 
-    ARIMAfit1 = sm.tsa.statespace.SARIMAX(prediction_data['Open'], seasonal_order=(0, 1, 1, 7)).fit()
-    ARIMAfit2 = sm.tsa.statespace.SARIMAX(prediction_data['High'], seasonal_order=(0, 1, 1, 7)).fit()
-    ARIMAfit3 = sm.tsa.statespace.SARIMAX(prediction_data['Low'], seasonal_order=(0, 1, 1, 7)).fit()
-    ARIMAfit4 = sm.tsa.statespace.SARIMAX(prediction_data['Close'], seasonal_order=(0, 1, 1, 7)).fit()
-
-    SARIMA_Prediction['Open'] = ARIMAfit1.predict(start=SARIMA_Prediction.Date[0], end=SARIMA_Prediction.Date[-1])
-    SARIMA_Prediction['High'] = ARIMAfit2.predict(start=SARIMA_Prediction.Date[0], end=SARIMA_Prediction.Date[-1])
-    SARIMA_Prediction['Low'] = ARIMAfit3.predict(start=SARIMA_Prediction.Date[0], end=SARIMA_Prediction.Date[-1])
-    SARIMA_Prediction['Close'] = ARIMAfit4.predict(start=SARIMA_Prediction.Date[0], end=SARIMA_Prediction.Date[-1])
-
-    SARIMA_Prediction_data = [go.Candlestick(x=SARIMA_Prediction.index,
-                                                   open=SARIMA_Prediction['Open'],
-                                                   high=SARIMA_Prediction['High'],
-                                                   low=SARIMA_Prediction['Low'],
-                                                   close=SARIMA_Prediction['Close'])]
 
     return go.Figure(data=HOLT_LINEAR_Prediction_data,layout=layout),\
-           go.Figure(data=HOLT_WINTERS_Prediction_data,layout=layout),\
-           go.Figure(data=SARIMA_Prediction_data,layout=layout)
+           go.Figure(data=HOLT_WINTERS_Prediction_data,layout=layout)
 
 ################################################ Choropleth Plot #######################################################
 @app.callback(
