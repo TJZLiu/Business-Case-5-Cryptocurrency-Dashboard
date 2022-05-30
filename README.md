@@ -1,10 +1,10 @@
-# Description
+## Description
 
 This Crypto Dashboard displays real-time data of the ten most popular cryptocurrencies regarding the price and volume, as well as the predictions for the next three days and some additional information. It also includes real-time Twitter updates concerning posts and discussions related to cryptocurrencies. 
 
 The dashboard is deployed on Render using Plotly’s open-source library Dash, and PyCharm as IDE. The data is updated every time the page is refreshed. 
 
-# How to navigate through the dashboard? 
+## How to navigate through the dashboard? 
 
 As most of the visualizations change for each cryptocurrency, the user first needs to select which cryptocurrency to display. The filter at the top of the page allows you to choose between the following ten currencies: ADA, ATOM, AVAX, AXS, BTC, ETH, LINK, LUNA1, MATIC, and SOL.
 
