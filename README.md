@@ -14,8 +14,8 @@ By switching between different cryptocurrencies, most of the elements on the das
 ![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/2.png?raw=true "Optional Title")
 
 The main graph, the Candlestick with Rangeslider, displays the daily prices and volume for the selected cryptocurrency. By default, it shows the data for the last four months where each candlestick represents one day. However, there are two additional filters that the user can apply. Firstly, the user can choose what period the candlestick should represent: 1 Day, 3 Days, 1 Week, 2 Weeks, or 1 Month. Secondly, we included some financial indicators such as the Simple Moving Average (SMA), Exponential Moving Average (EMA), Moving Standard Deviation (MSTD), Moving Variance (MVAR), and Bollinger Bands (Bolling). By selecting one of the indicators, the user can see it displayed together with the candlestick graph.
-![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/3.png?raw=true "Optional Title")
 
+![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/3.png?raw=true "Optional Title")
 
 Hovering over a specific element of the graph gives the user more information. For the candlesticks, it shows information about the opening, highest, lowest, and closing price for that specific period, as well as indicating whether the price went up or down. Hovering over the volume tells the exact volume traded for that period. 
 
