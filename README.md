@@ -1,12 +1,13 @@
-Description
+# Description
 
 This Crypto Dashboard displays real-time data of the ten most popular cryptocurrencies regarding the price and volume, as well as the predictions for the next three days and some additional information. It also includes real-time Twitter updates concerning posts and discussions related to cryptocurrencies. 
 
 The dashboard is deployed on Render using Plotly’s open-source library Dash, and PyCharm as IDE. The data is updated every time the page is refreshed. 
 
-How to navigate through the dashboard? 
+# How to navigate through the dashboard? 
 
-As most of the visualizations change for each cryptocurrency, the user first needs to select which cryptocurrency to display. The filter at the top of the page allows you to choose between the following ten currencies: ADA, ATOM, AVAX, AXS, BTC, ETH, LINK, LUNA1, MATIC, and SOL. 
+As most of the visualizations change for each cryptocurrency, the user first needs to select which cryptocurrency to display. The filter at the top of the page allows you to choose between the following ten currencies: ADA, ATOM, AVAX, AXS, BTC, ETH, LINK, LUNA1, MATIC, and SOL.
+
 ![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/1.png?raw=true "Optional Title")
 
 By switching between different cryptocurrencies, most of the elements on the dashboard will adapt and display information only for that specific currency. 
@@ -20,6 +21,7 @@ The main graph, the Candlestick with Rangeslider, displays the daily prices and 
 Hovering over a specific element of the graph gives the user more information. For the candlesticks, it shows information about the opening, highest, lowest, and closing price for that specific period, as well as indicating whether the price went up or down. Hovering over the volume tells the exact volume traded for that period. 
 
 ![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/4.png?raw=true "Optional Title")
+
 ![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/5.png?raw=true "Optional Title")
 
 The Rangeslider also allows the user to choose the period it wants to observe. 
