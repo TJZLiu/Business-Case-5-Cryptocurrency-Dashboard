@@ -27,7 +27,7 @@ The Rangeslider also allows the user to choose the period it wants to observe.
 
 ![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/6.png?raw=true "Optional Title")
 
-Below the Candlestick graph, we can find the predictions for the next seven days based on three different time series models that we used in our previous project. The three selected models are the Holt Linear model, the Holt-Winters model, and the SARIMA (Seasonal ARIMA) model. 
+Below the Candlestick graph, we can find the predictions for the next seven days based on two different time series models that we used in our previous project. The two selected models are the Holt Linear model and the Holt-Winters model. 
 
 ![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/7.png?raw=true "Optional Title")
 
