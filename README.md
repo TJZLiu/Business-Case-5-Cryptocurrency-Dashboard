@@ -7,8 +7,7 @@ The dashboard is deployed on Render using Plotly’s open-source library Dash, a
 How to navigate through the dashboard? 
 
 As most of the visualizations change for each cryptocurrency, the user first needs to select which cryptocurrency to display. The filter at the top of the page allows you to choose between the following ten currencies: ADA, ATOM, AVAX, AXS, BTC, ETH, LINK, LUNA1, MATIC, and SOL. 
-https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/1.png
-
+![Alt text](https://github.com/TJZLiu/Business-Case-5-Cryptocurrency-Dashboard/blob/main/readme_img/1.png?raw=true "Optional Title")
 
 By switching between different cryptocurrencies, most of the elements on the dashboard will adapt and display information only for that specific currency. 
 
