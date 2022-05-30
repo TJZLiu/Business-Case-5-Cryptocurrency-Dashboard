@@ -383,7 +383,7 @@ def other_prices_table_and_logo(Cryptocurrency_name):
            str(the_info.info['shortName']),\
            'Exchange Timezone Name: ' + str(the_info.info['exchangeTimezoneName']),\
            'Previous Close Price: ' + str(the_info.info['previousClose']),\
-           'Regular MarkeT Open Price: ' + str(the_info.info['regularMarketOpen']),\
+           'Regular Market Open Price: ' + str(the_info.info['regularMarketOpen']),\
            '200 days Average Price: ' + str(the_info.info['twoHundredDayAverage']),\
            'Volume 24 Hour: ' + str(the_info.info['volume24Hr']),\
            'Average Daily Volume of 10 Days: ' + str(the_info.info['averageDailyVolume10Day']),\
