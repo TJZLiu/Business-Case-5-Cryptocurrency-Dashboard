@@ -226,7 +226,7 @@ app.layout = html.Div([
             html.Div([
                 html.Div([
                     html.Div([
-                        html.H2("Legalty Monitor"),
+                        html.H2("Legality Monitor"),
                     ], className='container'),
                     html.Div([
                         html.Div([], style={'width': '20%'}),
